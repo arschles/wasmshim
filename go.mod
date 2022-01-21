@@ -2,7 +2,10 @@ module github.com/arschles/wasmshim
 
 go 1.17
 
-require github.com/containerd/containerd v1.5.9
+require (
+	github.com/bytecodealliance/wasmtime-go v0.33.1
+	github.com/containerd/containerd v1.5.9
+)
 
 require (
 	github.com/Microsoft/go-winio v0.4.17 // indirect
