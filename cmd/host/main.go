@@ -38,6 +38,9 @@ func main() {
 	run := instance.GetExport(store, "run").Func()
 
 	addr := fmt.Sprintf(":%d", *port)
+
 	log.Printf("Starting host server on %s", addr)
-	http.ListenAndServe(addr, handler(store, run))
+	reqCtr := reqCounterGauge()
+	handler := reqCounterMiddleware(handler(store, run), reqCtr)
+	http.ListenAndServe(addr, handler)
 }
