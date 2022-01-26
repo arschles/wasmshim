@@ -39,7 +39,7 @@ func main() {
 	// Create a container object in containerd
 	cntr, err := client.NewContainer(ctx, "myContainer",
 		// All the basic things needed to create the container
-		// containerd.WithSnapshotter("overlayfs"),
+		containerd.WithSnapshotter("overlayfs"),
 		containerd.WithNewSnapshot("redis-snapshot", img),
 		// containerd.WithImage(img),
 		containerd.WithNewSpec(oci.WithImageConfig(img)),
